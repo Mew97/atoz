@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+setTimeout(function () {
+
+    option = {
+        legend: {},
+        tooltip: {
+            trigger: 'axis',
+            showContent: false
+        },
+        dataset: {
+            source: [
+                ['product', '不限', '应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年',
+                '10年以上'],
+                ['0-20',0.2446,0.0189,0.1133,0.3667,0.2018,0.0516,0.0031],
+                ['20-50', 0.2804,0.0038,0.0188,0.4012,0.2174,0.0741,0.0043],
+                ['50-150', 0.3338,0,0,0.3555,0.2165,0.0897,0.0045],
+                ['150-500', 0.3244,0.0026,0.0074,0.3132,0.24,0.1059,0.0065],
+                ['500-1000', 0.341,0.0022,0.0044,0.289,0.2383,0.1182,0.0069],
+                ['1000-5000',0.3688,0.0031,0.0069,0.2593,0.2468,0.1091,0.006],
+				['5000-10000', 0.3847,0,0,0.2798,0.2285,0.1013,0.0057],
+				['10000-max',0.3726,0.0041,0.0101,0.2204,0.2674,0.1203,0.0051]
+            ]
+        },
+        xAxis: {type: 'category'},
+        yAxis: {gridIndex: 0},
+        grid: {top: '55%'},
+        series: [
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {
+                type: 'pie',
+                id: 'pie',
+                radius: '30%',
+                center: ['50%', '25%'],
+                label: {
+                    formatter: '{b}: {@2012} ({d}%)'
+                },
+                encode: {
+                    itemName: 'product',
+                    value: '2012',
+                    tooltip: '2012'
+                }
+            }
+        ]
+    };
+
+    myChart.on('updateAxisPointer', function (event) {
+        var xAxisInfo = event.axesInfo[0];
+        if (xAxisInfo) {
+            var dimension = xAxisInfo.value + 1;
+            myChart.setOption({
+                series: {
+                    id: 'pie',
+                    label: {
+                        formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                    },
+                    encode: {
+                        value: dimension,
+                        tooltip: dimension
+                    }
+                }
+            });
+        }
+    });
+
+    myChart.setOption(option);
+
+});;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

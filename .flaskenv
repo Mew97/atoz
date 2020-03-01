@@ -1,0 +1,2 @@
+FLASK_APP=atoz
+FLASK_ENV=development

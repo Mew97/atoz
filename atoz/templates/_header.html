@@ -1,0 +1,46 @@
+<header id="header">
+
+    <div id="header-wrap">
+
+        <div class="container clearfix">
+
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<div class="row justify-content-xl-between justify-content-lg-between clearfix">
+
+						<div class="col-lg-2 col-12 d-flex align-self-center">
+							<!-- Logo
+							============================================= -->
+							<div id="logo">
+								<a href="index.html" class="standard-logo"><img src="{{ url_for('static', filename='images/atoz.png') }}" alt="atoz Logo" height="70%"></a>
+							</div><!-- #logo end -->
+                        </div>
+
+						<div class="col-lg-8 col-12 d-xl-flex d-lg-flex justify-content-xl-center justify-content-lg-center">
+							<!-- Primary Navigation
+							============================================= -->
+							<nav id="primary-menu" class="with-arrows fnone clearfix">
+
+								<ul>
+									<li><a href="{{ url_for('index.index') }}"><div>首页</div></a></li>
+									<li><a href="{{ url_for('area.index') }}"><div>趋势</div></a></li>
+									<li><a href="{{ url_for('company.index') }}"><div>发现</div></a></li>
+									<li><a href="{{ url_for('faqs.faqs') }}"><div>言职</div></a></li>
+									<li><a href="{{ url_for('contact.contact') }}"><div>联系我们</div></a></li>
+								</ul>
+							</nav><!-- #primary-menu end -->
+						</div>
+
+						<div class="col-lg-2 d-none d-lg-inline-flex d-xl-inline-flex justify-content-end nomargin">
+							<!-- Top Search
+							============================================= -->
+							<div id="side-panel-trigger" class="side-panel-trigger">
+								<a href="#" class="d-block d-lg-none"><i class="icon-line-lock"></i></a>
+								<a href="#" class="d-none d-lg-block">登陆 <i class="icon-line-arrow-right"></i></a>
+							</div><!-- #top-search end -->
+						</div>
+						<a href="#" class="d-block d-lg-none mobile-side-panel side-panel-trigger"><i class="icon-line-arrow-right"></i></a>
+					</div>
+				</div>
+    </div>
+</header>

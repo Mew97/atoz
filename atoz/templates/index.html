@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	{% include '_head.html' %}
+
+	<title>ATOZ</title>
+
+</head>
+
+<body class="stretched side-push-panel">
+
+
+	<div id="side-panel">
+
+		<div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon-line-cross"></i></a></div>
+
+		<div class="side-panel-wrap">
+
+			<div class="widget clearfix">
+
+				<h4 class="t400">Login with Social</h4>
+
+				<a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-facebook">Facebook</a>
+				<a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-gplus">Google</a>
+
+				<div class="line line-sm"></div>
+
+				<form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+
+					<div class="col_full">
+						<label for="login-form-username" class="t400">Username:</label>
+						<input type="text" id="login-form-username" name="login-form-username" value="" class="form-control" />
+					</div>
+
+					<div class="col_full">
+						<label for="login-form-password" class="t400">Password:</label>
+						<input type="password" id="login-form-password" name="login-form-password" value="" class="form-control" />
+					</div>
+
+					<div class="col_full nobottommargin">
+						<button class="button button-rounded t400 nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+						<a href="#" class="text-muted fright">Forgot Password?</a>
+					</div>
+
+				</form>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Header
+		============================================= -->
+		{% include '_header.html' %}<!-- #header end -->
+
+		<!-- Slider
+		============================================= -->
+		<section id="slider" class="slider-element clearfix" style="height: 500px; background: url('{{ url_for('static', filename='demos/interior-design/images/a1.jpg') }}') center center no-repeat; background-size: cover;">
+			<div class="vertical-middle">
+				<div class="container clearfix">
+
+					<div class="clearfix center divcenter" style="max-width: 700px;">
+						<div class="emphasis-title">
+							<h1 class="font-secondary" style="color: #FFF; font-size: 50px; font-weight: 900; text-shadow: 0 7px 10px rgba(0,0,0,0.07), 0 4px 4px rgba(0,0,0,0.2);">互联网的未来，取决于你的选择</h1>
+							<p style="font-weight: 300; opacity: .7; color: #FFF; text-shadow: 0 -4px 20px rgba(0, 0, 0, .25);">The future of the Internet depends on your choice</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</section>
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap notoppadding clearfix">
+
+				<div class="section notopmargin clearfix" style="padding: 80px 0">
+					<div class="container clearfix">
+
+						<div class="divcenter" style="max-width: 960px">
+							<div class="row clearfix">
+								<div class="col-12 col-md-4 center customers-count">
+									<div class="counter center counter-large font-primary"><span data-from="100" data-to="1102835" data-refresh-interval="100" data-speed="2000" data-comma="true"></span></div>
+									<p>个全国范围内岗位数据</p>
+								</div>
+								<div class="col-12 col-md-7 offset-md-1">
+									<blockquote class="quote nobottommargin">
+										<p>不管你是具有丰富从业经验的IT人，还是即将毕业寻求人生第一份工作的应届生，ATOZ都将基于大数据分析，为您提供独特且极具成本效益的解决方案</p>
+										<footer class="color">武汉阿托滋人力资源服务有限公司</footer>
+									</blockquote>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="container topmargin-lg bottommargin-lg clearfix">
+
+					<div class="divcenter" style="max-width: 1500px">
+						<div class="heading-block center nobottomborder">
+							<h2 class="ls2 t700">全国各地岗位数分布图</h2>
+							<span>我们分析了全国的IT行业岗位数目分布情况<br>这张地图可以为您提供就业城市选择上的一些参考</span>
+						</div>
+					</div>
+
+				</div>
+
+                <div class="container topmargin-lg bottommargin-lg clearfix">
+                    <iframe class="J_iframe" width="100%" height="700px" frameborder="0" scrolling="no" src="{{ url_for('area.map_t') }}"></iframe>
+                </div>
+
+				<div class="section bottommargin-sm dark" style="background: url('{{ url_for('static', filename='demos/interior-design/images/section/a1.jpg') }}'); background-size: cover; padding: 110px 0; background-position: 0 60%">
+					<div class="container clearfix">
+						<div class="emphasis-title divcenter center" style="max-width: 900px">
+							<h2 class="font-secondary ls1" style="font-size: 52px;">Start now, happy to find a job</h2>
+						</div>
+					</div>
+				</div>
+
+				<div class="container clearfix">
+                    <div class="divcenter" style="max-width: 1500px">
+                        <div class="heading-block center nobottomborder">
+                            <h2 class="ls2 t700">全国热门地区平均薪资一览表</h2>
+                            <span>在这里，我们挑选了一些热门城市地区<br>为您详尽的展示薪资水平与岗位数量情况</span>
+                        </div>
+                    </div>
+                    <div class="container topmargin-lg bottommargin-lg clearfix">
+                        <iframe class="J_iframe" width="100%" height="600px" name="i" id="ourlIframe" frameborder="0" scrolling="no" src="{{ url_for('index.city_area') }}" onload="reinitIframe()"></iframe>
+                    </div>
+				</div>
+
+                <div class="container clearfix">
+                    <div class="divcenter" style="max-width: 1500px">
+                        <div class="heading-block center nobottomborder">
+                            <h2 class="ls2 t700">福利排行榜</h2>
+                            <span>在这里，我们根据全国各公司提供的福利<br>挑选了一些热门的福利供您参考</span>
+                        </div>
+                    </div>
+                    <div class="container topmargin-lg bottommargin-lg clearfix">
+                        <iframe class="J_iframe" width="100%" height="600px" name="i" id="ourlIframe" frameborder="0" scrolling="no" src="{{ url_for('index.welfare') }}" onload="reinitIframe()"></iframe>
+                    </div>
+				</div>
+
+                <div class="container clearfix">
+                    <div class="divcenter" style="max-width: 1500px">
+                        <div class="heading-block center nobottomborder">
+                            <h2 class="ls2 t700">全国热门地区岗位形式</h2>
+                            <span>在这里，我们挑选了一些热门城市地区<br>为您详尽的展示岗位数量情况</span>
+                        </div>
+                    </div>
+                    <div class="container topmargin-lg bottommargin-lg clearfix">
+                        <iframe class="J_iframe" width="100%" height="600px" name="i" id="ourlIframe" frameborder="0" scrolling="no" src="{{ url_for('index.salary') }}" onload="reinitIframe()"></iframe>
+                    </div>
+				</div>
+
+
+
+			</div>
+
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		{% include "_footer.html" %}
+        <!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	{% include '_JavaScripts.html' %}
+
+</body>
+</html>

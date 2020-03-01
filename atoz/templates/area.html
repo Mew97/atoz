@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+    {% include '_head.html' %}
+
+    <!-- Document Title
+    ============================================= -->
+    <title>趋势</title>
+
+    <style>
+
+        .white-section {
+            background-color: #FFF;
+            padding: 25px 20px;
+            -webkit-box-shadow: 0px 1px 1px 0px #dfdfdf;
+            box-shadow: 0px 1px 1px 0px #dfdfdf;
+            border-radius: 3px;
+        }
+
+        .white-section label {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .white-section pre {
+            margin-top: 15px;
+        }
+
+        .dark .white-section {
+            background-color: #111;
+            -webkit-box-shadow: 0px 1px 1px 0px #444;
+            box-shadow: 0px 1px 1px 0px #444;
+        }
+
+    </style>
+
+</head>
+
+<body class="stretched side-push-panel">
+
+<div id="side-panel">
+
+    <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon-line-cross"></i></a></div>
+
+    <div class="side-panel-wrap">
+
+        <div class="widget clearfix">
+
+            <h4 class="t400">Login with Social</h4>
+
+            <a href="#"
+               class="button button-rounded t400 btn-block center si-colored noleftmargin si-facebook">Facebook</a>
+            <a href="#" class="button button-rounded t400 btn-block center si-colored noleftmargin si-gplus">Google</a>
+
+            <div class="line line-sm"></div>
+
+            <form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+
+                <div class="col_full">
+                    <label for="login-form-username" class="t400">Username:</label>
+                    <input type="text" id="login-form-username" name="login-form-username" value=""
+                           class="form-control"/>
+                </div>
+
+                <div class="col_full">
+                    <label for="login-form-password" class="t400">Password:</label>
+                    <input type="password" id="login-form-password" name="login-form-password" value=""
+                           class="form-control"/>
+                </div>
+
+                <div class="col_full nobottommargin">
+                    <button class="button button-rounded t400 nomargin" id="login-form-submit" name="login-form-submit"
+                            value="login">Login
+                    </button>
+                    <a href="#" class="text-muted fright">Forgot Password?</a>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <!-- Header
+    ============================================= -->
+    {% include '_header.html' %}<!-- #header end -->
+
+    <!-- Page Title
+    ============================================= -->
+    <section id="page-title" class="nobg border-top page-title-center">
+
+        <div class="container clearfix">
+            <h1 class="font-secondary nott mb-4" style="font-size: 54px;">趋势</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">形势</a></li>
+                <li class="breadcrumb-item active" aria-current="page">分析</li>
+            </ol>
+        </div>
+
+    </section><!-- #page-title end -->
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+
+        <div class="content-wrap pt-0 clearfix">
+
+            <div class="section mt-0 mt-0">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-md-5">
+                            <div class="heading-block nobottomborder mb-4 mb-md-0">
+                                <h2 class="ls2 t700">数据驱动业务</h2>
+                                <span class="font-secondary t400">我们所有的分析结果均基于大量数据，客观、真实，并且可视化展现，为您提供精准的就业风向标</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="lead mb-0">以下我们主要展示热门城市行业类别，公司规模，岗位福利，岗位要求等具体指标的横向对比，让您更加直观的了解行业动态</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="divcenter">
+                    <div class="heading-block center nobottomborder">
+                        <h2 class="ls2 t700">热门省市行业种类分布表</h2>
+                        <span>我们挑选了一些热门城市地区<br>为您详尽的展示各个城市内的行业种类组成情况</span>
+                    </div>
+                </div>
+                <div class="divcenter">
+                    <div class="tabs tabs-alt tabs-responsive tabs-justify clearfix" id="tab">
+
+                        <ul class="tab-nav clearfix">
+                            <li><a href="#tabs-0" onclick="get_chart('tabs-0',0)"><i
+                                    class="icon-line2-social-dropbox"></i>五大热门城市</a></li>
+                            <li><a href="#tabs-0" onclick="get_chart('tabs-0',1)"><i class="icon-line2-pointer"></i>上海市</a>
+                            </li>
+                            <li><a href="#tabs-0" onclick="get_chart('tabs-0',2)"><i class="icon-line2-pointer"></i>北京市</a>
+                            </li>
+                            <li><a href="#tabs-0" onclick="get_chart('tabs-0',3)"><i class="icon-line2-pointer"></i>天津市</a>
+                            </li>
+                            <li><a href="#tabs-0" onclick="get_chart('tabs-0',4)"><i class="icon-line2-pointer"></i>广东省</a>
+                            </li>
+                            <li><a href="#tabs-0" onclick="get_chart('tabs-0',5)"><i class="icon-line2-pointer"></i>湖北省</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-container">
+                            <iframe width="110%" height="700px" id="tabs-0" frameborder="0" scrolling="no"
+                                    src=""></iframe>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="divcenter">
+                    <div class="heading-block center nobottomborder">
+                        <h2 class="ls2 t700">多维解析</h2>
+                        <span>根据您的需求，从多种角度出发<br>为您详尽的展示岗位数量和平均薪资在不同因素下的趋势</span>
+                    </div>
+                </div>
+                <div class="divcenter">
+                    <div class="tabs tabs-alt tabs-responsive tabs-justify clearfix" id="tab">
+                        <div>
+                            <div class="white-section">
+                                <label>选择影响因素(2项)、计算指标以及展示方式:</label>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <select class="selectpicker" multiple data-max-options="2" id="flag">
+                                            <option>地区</option>
+                                            <option>经验要求</option>
+                                            <option>学历要求</option>
+                                            <option>公司规模</option>
+                                            <option>行业大类</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="selectpicker" id="value">
+                                            <option>岗位数量</option>
+                                            <option>平均薪资</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="selectpicker" id="chart">
+                                            <option>3D图</option>
+                                            <option>折线图</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <a href="#tabs-0-2" class="button button-border button-border-thin button-black" onclick="costumchart('tabs-0-2')"><i class="icon-play"></i>为我展示</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-container">
+                            <iframe width="110%" height="700px" id="tabs-0-2" frameborder="0" scrolling="no"
+                                    src="" style="display: none"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{#            <div class="container">#}
+{#                <div class="divcenter">#}
+{#                    <div class="heading-block center nobottomborder">#}
+{#                        <h2 class="ls2 t700">薪酬解析</h2>#}
+{#                        <span>我们挑选了一些热门城市地区<br>为您详尽的展示各个城市不同岗位要求的平均薪酬</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+            <div class="container">
+                <div class="divcenter">
+                    <div class="heading-block center nobottomborder">
+                        <h2 class="ls2 t700">大数据行业解析</h2>
+                        <span>我们针对大数据行业进行类专业大分析<br>为您详尽的展示大数据行业的就业趋势</span>
+                    </div>
+                </div>
+                <div class="divcenter">
+                    <div class="tabs tabs-alt tabs-responsive tabs-justify clearfix" id="tab">
+
+                        <ul class="tab-nav clearfix">
+                            <li><a href="#tabs-0-4" onclick="get_chart('tabs-0-4',16)"><i
+                                    class="icon-line2-pointer"></i>大数据岗位要求分析</a></li>
+                            <li><a href="#tabs-0-4" onclick="get_chart('tabs-0-4',17)"><i
+                                    class="icon-line2-pointer"></i>大数据薪资范围分析</a></li>
+                            <li><a href="#tabs-0-4" onclick="get_chart('tabs-0-4',18)"><i
+                                    class="icon-line2-pointer"></i>各地平均薪资比较</a></li>
+                            <li><a href="#tabs-0-4" onclick="get_chart('tabs-0-4',19)"><i
+                                    class="icon-line2-pointer"></i>热门城市大数据分析</a></li>
+                            <li><a href="#tabs-0-4" onclick="get_chart('tabs-0-4',20)"><i
+                                    class="icon-line2-pointer"></i>具体类别职位分布</a></li>
+                        </ul>
+
+                        <div class="tab-container">
+                            <iframe width="100%" height="700px" id="tabs-0-4" frameborder="0" scrolling="no"
+                                    src=""></iframe>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section><!-- #content end -->
+
+    <!-- Footer
+    ============================================= -->
+    {% include '_footer.html' %}<!-- #footer end -->
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+
+{% include '_JavaScripts.html' %}
+
+<script>
+    function get_chart(c_id, tabs) {
+        var id = c_id;
+        var flag = tabs;
+        {#var key_0=document.getElementById("key_0").value;#}
+        $('#' + id).attr("src", "/area/a" + flag);
+    }
+</script>
+
+<script>
+
+    $('.selectsplitter').selectsplitter();
+
+</script>
+
+<script>
+    function costumchart(c_id) {
+        var status=[];
+        $('#flag option:selected').each(function(){
+            status.push($(this).val())
+        });
+        var id = c_id;
+        var flag = status.join(",");
+        var value = document.getElementById("value").value;
+        var chart = document.getElementById("chart").value;
+
+        $('#' + id).attr({src:"/area/a13" + "?flag=" + flag + '&value=' + value + '&chart=' + chart, style:"display: block"});
+    }
+</script>
+
+</body>
+</html>

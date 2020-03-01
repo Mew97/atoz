@@ -1,0 +1,36 @@
+<!-- External JavaScripts
+============================================= -->
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+{#<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>#}
+
+<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+
+<!-- Bootstrap Data Table Plugin -->
+<script src="{{ url_for('static', filename='js/components/bs-datatable.js') }}"></script>
+
+<!-- Bootstrap Select Plugin -->
+<script src="{{ url_for('static', filename='js/components/bs-select.js') }}"></script>
+
+<!-- Select Splitter Plugin -->
+<script src="{{ url_for('static', filename='js/components/selectsplitter.js') }}"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="{{ url_for('static', filename='js/functions.js') }}"></script>
+
+
+{#<script>#}
+{#function reinitIframe() {#}
+{#var iframe = document.getElementById("urlIframe");#}
+{# try#}
+{#{#}
+{#var bHeight = iframe.contentWindow.document.body.scrollHeight;#}
+{##}
+{#var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;#}
+{#var height = Math.max(bHeight, dHeight);#}
+{#iframe.height = height;#}
+{#iframe.height = bHeight;#}
+
+{#catch (ex) { }#}
+
+{#</script>#}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '水印 - ECharts 下载统计'
+
+var builderJson = {
+  "all": 12000,
+  "charts": {
+    "不限": 1798,
+    "中专及以下": 338,
+    "大专": 2255,
+    "本科": 11787,
+    "硕士": 1964,
+    "博士": 138
+  },
+  "components": {
+    "不限": 4451,
+    "应届毕业生": 198,
+    "1年以下": 426,
+    "1-3年": 4897,
+    "3-5年": 6135,
+    "5-10年": 2108,
+    "10年以上": 61
+  },
+  "ie": 9743
+};
+
+var downloadJson = {
+   "不限(9.84%)": 1798,
+    "中专及以下(1.85%)": 338,
+    "大专(12.34%)": 2255,
+    "本科(64.48%)": 11787,
+    "硕士(10.74%)": 1964,
+    "博士(0.75%)": 138
+};
+
+var themeJson = {
+  "不限(24.38%)": 4451,
+    "应届毕业生(1.08%)": 198,
+    "1年以下(2.33%)": 426,
+    "1-3年(26.79%)": 4897,
+    "3-5年(33.56%)": 6135,
+    "5-10年(11.53%)": 2108,
+    "10年以上(0.33%)": 61
+};
+
+var waterMarkText = '';
+
+var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d');
+canvas.width = canvas.height = 100;
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.globalAlpha = 0.08;
+ctx.font = '20px Microsoft Yahei';
+ctx.translate(50, 50);
+ctx.rotate(-Math.PI / 4);
+ctx.fillText(waterMarkText, 0, 0);
+
+option = {
+    backgroundColor: {
+        type: 'pattern',
+        image: canvas,
+        repeat: 'repeat'
+    },
+    tooltip: {},
+    title: [{
+        text: '岗位分析',
+        // subtext: '总计 ' + builderJson.all,
+        x: '25%',
+        textAlign: 'center'
+    }, {
+        text: '学历',
+        subtext: '总计 ' + Object.keys(downloadJson).reduce(function (all, key) {
+            return all + downloadJson[key];
+        }, 0),
+        x: '75%',
+        textAlign: 'center'
+    }, {
+        text: '工作经验',
+        // subtext: '总计 ' + Object.keys(themeJson).reduce(function (all, key) {
+        //     return all + themeJson[key];
+        // }, 0),
+        x: '75%',
+        y: '50%',
+        textAlign: 'center'
+    }],
+    grid: [{
+        top: 50,
+        width: '50%',
+        bottom: '45%',
+        left: 10,
+        containLabel: true
+    }, {
+        top: '55%',
+        width: '50%',
+        bottom: 0,
+        left: 10,
+        containLabel: true
+    }],
+    xAxis: [{
+        type: 'value',
+        max: builderJson.all,
+        splitLine: {
+            show: false
+        }
+    }, {
+        type: 'value',
+        max: builderJson.all,
+        gridIndex: 1,
+        splitLine: {
+            show: false
+        }
+    }],
+    yAxis: [{
+        type: 'category',
+        data: Object.keys(builderJson.charts),
+        axisLabel: {
+            interval: 0,
+            rotate: 30
+        },
+        splitLine: {
+            show: false
+        }
+    }, {
+        gridIndex: 1,
+        type: 'category',
+        data: Object.keys(builderJson.components),
+        axisLabel: {
+            interval: 0,
+            rotate: 30
+        },
+        splitLine: {
+            show: false
+        }
+    }],
+    series: [{
+        type: 'bar',
+        stack: 'chart',
+        z: 3,
+        label: {
+            normal: {
+                position: 'right',
+                show: true
+            }
+        },
+        data: Object.keys(builderJson.charts).map(function (key) {
+            return builderJson.charts[key];
+        })
+    }, {
+        type: 'bar',
+        stack: 'chart',
+        silent: true,
+        itemStyle: {
+            normal: {
+                color: '#eee'
+            }
+        },
+        data: Object.keys(builderJson.charts).map(function (key) {
+            return builderJson.all - builderJson.charts[key];
+        })
+    }, {
+        type: 'bar',
+        stack: 'component',
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        z: 3,
+        label: {
+            normal: {
+                position: 'right',
+                show: true
+            }
+        },
+        data: Object.keys(builderJson.components).map(function (key) {
+            return builderJson.components[key];
+        })
+    }, {
+        type: 'bar',
+        stack: 'component',
+        silent: true,
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        itemStyle: {
+            normal: {
+                color: '#eee'
+            }
+        },
+        data: Object.keys(builderJson.components).map(function (key) {
+            return builderJson.all - builderJson.components[key];
+        })
+    }, {
+        type: 'pie',
+        radius: [0, '30%'],
+        center: ['75%', '25%'],
+        data: Object.keys(downloadJson).map(function (key) {
+            return {
+                name: key.replace('.js', ''),
+                value: downloadJson[key]
+            }
+        })
+    }, {
+        type: 'pie',
+        radius: [0, '30%'],
+        center: ['75%', '75%'],
+        data: Object.keys(themeJson).map(function (key) {
+            return {
+                name: key.replace('.js', ''),
+                value: themeJson[key]
+            }
+        })
+    }]
+};
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
